@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="What peer-reviewed research says about keeping people watching YouTube Shorts, TikTok and Reels.">
+<style>*,*::before,*::after{box-sizing:border-box}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Stay or Swipe</title>
+</head>
+<body>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a Short's timeline as the spine. A sticky rail of timecodes on the left, one reading column (~68ch) on the right; the rail turns into a scrolling chip bar on phones. */
+:root{
+  --paper:#F3F5F8; --surface:#FFFFFF; --ink:#121821; --muted:#566170; --rule:#D8DEE7;
+  --accent:#0A7487; --accent-soft:#DCEFF2;
+  --strong:#1D7A4A; --moderate:#2753B8; --indirect:#5F6977; --test:#A35F00;
+  --display:"Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --body:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0E131A; --surface:#151C25; --ink:#E6ECF3; --muted:#9AA6B5; --rule:#263140;
+  --accent:#3DB9CC; --accent-soft:#12313A; --strong:#4CC283; --moderate:#7EA2FF; --indirect:#A3ADBA; --test:#F2A63A; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#0E131A; --surface:#151C25; --ink:#E6ECF3; --muted:#9AA6B5; --rule:#263140;
+  --accent:#3DB9CC; --accent-soft:#12313A; --strong:#4CC283; --moderate:#7EA2FF; --indirect:#A3ADBA; --test:#F2A63A; color-scheme:dark }
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:40px 72px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:56px}
+.rail{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:2px}
+.rail a{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:baseline;padding:6px 8px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:14px}
+.rail a:hover{background:var(--accent-soft)}
+.rail .tc{font-family:var(--mono);font-size:12px;color:var(--accent);font-variant-numeric:tabular-nums}
+main{min-width:0;max-width:72ch}
+header.hero{display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(44px,8vw,76px);line-height:.98;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.lede{font-size:19px;color:var(--ink);margin:0;max-width:60ch}
+.meta{font-size:14px;color:var(--muted)}
+.scale{margin:18px 0 6px;padding:18px 16px 30px;background:var(--surface);border:1px solid var(--rule);border-radius:10px}
+.scale .cap{font-size:13px;color:var(--muted);margin-bottom:14px}
+.bar{position:relative;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--accent) 0 6.7%,var(--accent-soft) 6.7%)}
+.tick{position:absolute;top:-4px;width:2px;height:18px;background:var(--ink)}
+.tick span{position:absolute;top:22px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tick.end span{left:auto;right:0;transform:none}
+.tick.start span{left:0;transform:none}
+.zone{position:absolute;top:0;height:10px;left:73.3%;width:13.4%;background:repeating-linear-gradient(135deg,var(--test) 0 3px,transparent 3px 7px);opacity:.8;border-radius:2px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0 0;padding:0;list-style:none}
+.howto li{font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+section{padding-top:28px;margin-top:28px;border-top:1px solid var(--rule)}
+.sec-head{display:flex;flex-direction:column;gap:4px;margin-bottom:6px}
+.sec-head .tc{font-family:var(--mono);font-size:13px;color:var(--accent)}
+h2{font-family:var(--display);font-size:clamp(26px,4vw,34px);line-height:1.1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.intro{color:var(--muted);margin:6px 0 0}
+.rule{display:flex;flex-direction:column;gap:6px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.rule:last-child{border-bottom:0}
+.rule h3{font-family:var(--display);font-size:19px;font-weight:600;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:10px;text-wrap:balance}
+.rule p{margin:0}
+.do{font-weight:600}
+.do::before{content:"Do: ";color:var(--accent)}
+.chip{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor;line-height:1.5}
+.chip.strong{color:var(--strong)} .chip.moderate{color:var(--moderate)} .chip.indirect{color:var(--indirect)} .chip.test{color:var(--test)}
+.cite{font-size:.86em;white-space:nowrap}
+.note{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:10px}
+.check li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.check input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--accent)}
+.check label{cursor:pointer}
+.check b{font-family:var(--display);font-weight:600}
+.btnrow{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}
+button{font:600 14px var(--body);padding:8px 14px;border-radius:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--accent)}
+#copied{font-size:13px;color:var(--muted)}
+ol.refs{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+ol.refs li{color:var(--ink)}
+ol.refs .rl{font-weight:600;margin-right:6px}
+footer{margin-top:48px;font-size:13px;color:var(--muted)}
+@media (max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding-block:16px 56px}
+  .rail{flex-direction:row;overflow-x:auto;gap:6px;padding:10px 0;margin-bottom:12px;background:var(--paper);z-index:5;top:env(safe-area-inset-top, 0px)}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--paper)}
+  .rail a{display:flex;gap:6px;white-space:nowrap;border:1px solid var(--rule);background:var(--surface)}
+}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="wrap">
+<nav class="rail" aria-label="Sections">
+  <a href="#feed"><span class="tc">before</span>What the feed rewards</a>
+  <a href="#glance"><span class="tc">0.05 s</span>First glance</a>
+  <a href="#second"><span class="tc">1 s</span>First second</a>
+  <a href="#five"><span class="tc">5 s</span>Front-load</a>
+  <a href="#danger"><span class="tc">12 s</span>Danger zone</a>
+  <a href="#middle"><span class="tc">middle</span>Pacing</a>
+  <a href="#end"><span class="tc">end</span>Peak and end</a>
+  <a href="#words"><span class="tc">text</span>Words</a>
+  <a href="#voice"><span class="tc">audio</span>Voice</a>
+  <a href="#sound"><span class="tc">audio</span>Sound and music</a>
+  <a href="#length"><span class="tc">total</span>Length</a>
+  <a href="#subject"><span class="tc">idea</span>Choosing the subject</a>
+  <a href="#checklist"><span class="tc">list</span>Checklist</a>
+  <a href="#sources"><span class="tc">refs</span>Sources</a>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">A research guide for short-form video</div>
+  <h1>Stay or Swipe</h1>
+  <p class="lede">What peer-reviewed research says about keeping people watching YouTube Shorts, TikTok and Reels, from the first frame to the last.</p>
+  <div class="meta">Built from 102 papers, each read in full · last updated 14 November 2026</div>
+  <div class="scale" role="img" aria-label="The first 15 seconds of a short video, to scale: appeal is judged by 50 milliseconds, the first second starts the emotional rise, the first 5 seconds carry about half of a 30-second ad's effect, and leaving peaks around 11 to 12 seconds.">
+    <div class="cap">The first 15 seconds, to scale</div>
+    <div class="bar">
+      <div class="tick start" style="left:0.3%"><span>50 ms</span></div>
+      <div class="tick" style="left:6.7%"><span>1 s</span></div>
+      <div class="tick" style="left:33.3%"><span>5 s</span></div>
+      <div class="zone" title="11–12 s: peak risk of leaving"></div>
+      <div class="tick" style="left:76.7%"><span>11–12 s</span></div>
+      <div class="tick end" style="left:calc(100% - 2px)"><span>15 s</span></div>
+    </div>
+  </div>
+  <ul class="howto">
+    <li><span class="chip strong">Strong</span>Large field data, a meta-analysis, or replicated across studies.</li>
+    <li><span class="chip moderate">Moderate</span>A controlled experiment on a close decision: zapping, skipping, viewing time.</li>
+    <li><span class="chip indirect">Indirect</span>A different outcome (likes, clicks, shares) or a distant setting.</li>
+    <li><span class="chip test">Test it</span>A research-based idea nobody has tested on short video yet.</li>
+  </ul>
+  <p class="note">No study here measured the Shorts, TikTok or Reels feed directly. The closest are TV zapping and YouTube ad skipping, where the decision to stop watching was measured second by second. Treat the numbers as directions and change one thing at a time.</p>
+</header>
+
+<section id="feed">
+  <div class="sec-head"><span class="tc">before you post</span><h2>What the feed rewards</h2></div>
+  <div class="rule"><h3>Watch time and satisfaction, not clicks <span class="chip indirect">Indirect</span></h3>
+    <p>YouTube's own engineers trained its ranking model on expected watch time, choosing it over click-through rate because ranking by clicks "often promotes deceptive videos" <a class="cite" href="#ref-covington2016">[Covington et al. 2016]</a>. A later version also weighs satisfaction signals such as likes and dismissals <a class="cite" href="#ref-zhao2019">[Zhao et al. 2019]</a>.</p>
+    <p class="do">A title that wins the click and loses the viewer works against you.</p></div>
+  <div class="rule"><h3>Reach comes from one big broadcast <span class="chip indirect">Indirect</span></h3>
+    <p>For video, reach tracked "the size of the largest broadcast", and more than 99% of shares went no further than one step <a class="cite" href="#ref-goel2016">[Goel et al. 2016]</a>. On a platform, the biggest broadcaster is the recommender.</p></div>
+  <div class="rule"><h3>Spikes fade, momentum compounds <span class="chip indirect">Indirect</span></h3>
+    <p>Socially shared videos rose and fell faster, and videos that stayed popular long-term were rarely viral <a class="cite" href="#ref-broxton2011">[Broxton et al. 2013]</a>. About 90% of ~5 million videos never had a burst at all <a class="cite" href="#ref-crane2008">[Crane &amp; Sornette 2008]</a>. Prior views were the strongest predictor of new views, and a channel's existing views explained 64% of a new upload's early views <a class="cite" href="#ref-borghol2012">[Borghol et al. 2012]</a>.</p></div>
+  <div class="rule"><h3>Expect luck <span class="chip moderate">Moderate</span></h3>
+    <p>Visible popularity made music downloads unequal and unpredictable. The best songs rarely did badly and the worst rarely did well, but anything in between could happen <a class="cite" href="#ref-salganik2006">[Salganik et al. 2006]</a>.</p>
+    <p class="do">Judge a format by the median of several videos, never by one.</p></div>
+  <div class="rule"><h3>Titles and thumbnails can be fixed after posting <span class="chip indirect">Indirect</span></h3>
+    <p>Changing a title, thumbnail or keywords after upload raised views about half the time (52%, 53.3%, 50%), against 35% with no change. Title changes lifted search traffic ×1.24 and thumbnail changes lifted related-video traffic ×1.20 <a class="cite" href="#ref-hoiles2017">[Hoiles et al. 2017]</a>. The sample was mostly gaming channels.</p></div>
+</section>
+
+<section id="glance">
+  <div class="sec-head"><span class="tc">00:00.05</span><h2>The first glance</h2></div>
+  <div class="rule"><h3>Appeal is decided in 50 milliseconds <span class="chip moderate">Moderate</span></h3>
+    <p>Appeal ratings after 50 ms correlated r = .95 with ratings after 500 ms. Appeal tracked how interesting, well designed and well coloured something looked, not how simple or complex it was <a class="cite" href="#ref-lindgaard2006">[Lindgaard et al. 2006]</a>. Impressions formed in 39 ms matched those formed in 1.7 seconds, carried by coarse shapes rather than fine detail <a class="cite" href="#ref-bar2006">[Bar et al. 2006]</a>.</p>
+    <p class="do">Make the big shapes do the work.</p></div>
+  <div class="rule"><h3>One thing to look at <span class="chip strong">Strong</span></h3>
+    <p>When everyone's gaze converges on one spot, fewer people leave <a class="cite" href="#ref-teixeira2012">[Teixeira et al. 2012]</a>. Scattered attention was a bigger cause of zapping than branding <a class="cite" href="#ref-pulsing2010">[Teixeira et al. 2010]</a>. Faces and text pull the first look, even when people try to avoid them <a class="cite" href="#ref-cerf2009">[Cerf et al. 2009]</a>. A saturated object drew the first look 60% of the time and held the eye longer <a class="cite" href="#ref-hagtvedt2017">[Hagtvedt &amp; Brasel 2017]</a>.</p>
+    <p class="do">Give every frame one obvious focal point. No collage.</p></div>
+  <div class="rule"><h3>Put it in the centre <span class="chip moderate">Moderate</span></h3>
+    <p>When people skim, the centre wins. During fast-forwarding, the middle 5% of the screen held about 42% of gaze, and a brand placed there was looked at 55% of the time against 3% off-centre <a class="cite" href="#ref-brasel2008">[Brasel &amp; Gips 2008]</a>. Rising suspense pulls attention further toward the centre <a class="cite" href="#ref-bezdek2015">[Bezdek et al. 2015]</a>.</p></div>
+  <div class="rule"><h3>Low clutter, strong design <span class="chip strong">Strong</span></h3>
+    <p>In 249 magazine ads tracked with eye cameras, raw clutter hurt attention to the brand (−.473) and attitude (−.318). Designed structure helped attention to the picture (.682) and comprehension (.400) <a class="cite" href="#ref-pieters2010">[Pieters et al. 2010]</a>. In TV ads, both too-simple and too-busy frames raised zapping <a class="cite" href="#ref-teixeira2012">[Teixeira et al. 2012]</a> <a class="cite" href="#ref-pulsing2010">[Teixeira et al. 2010]</a>.</p>
+    <p class="do">Few raw details, one deliberate composition. A bare card is as risky as a busy one.</p></div>
+  <div class="rule"><h3>Look professional <span class="chip indirect">Indirect</span></h3>
+    <p>Picture quality was the one image effect that held across both platforms tested. Screenshots cost 31–75% of engagement <a class="cite" href="#ref-lixie2019">[Li &amp; Xie 2019]</a>.</p></div>
+  <div class="rule"><h3>Commit to a colour temperature <span class="chip moderate">Moderate</span></h3>
+    <p>In short videos, a near-neutral colour cast did worst on clicks and sales, while clearly warm or clearly cold colour did best, most of all at the video's peak moment <a class="cite" href="#ref-wen2025">[Wen et al. 2025]</a>. Brightness drives pleasure and saturation drives arousal <a class="cite" href="#ref-valdez1994">[Valdez &amp; Mehrabian 1994]</a>. As hues on their own, blue was liked most and yellow among the least in two studies <a class="cite" href="#ref-valdez1994">[Valdez &amp; Mehrabian 1994]</a> <a class="cite" href="#ref-camgoz2002">[Camgöz et al. 2002]</a>. Calm, light colours made a wait feel shorter <a class="cite" href="#ref-gorn2004">[Gorn et al. 2004]</a>.</p></div>
+  <div class="rule"><h3>Text readable in a glance <span class="chip moderate">Moderate</span></h3>
+    <p>Dark text on a light background was never worse. In a dark room, light-on-dark text needed 107–122 ms to read against 83–92 ms for dark-on-light, and in bright light larger letters read faster <a class="cite" href="#ref-dobres2017">[Dobres et al. 2017]</a>. Dark-on-light also won at any room brightness <a class="cite" href="#ref-buchner2007">[Buchner &amp; Baumgartner 2007]</a> and was rated the most readable pairing <a class="cite" href="#ref-hall2004">[Hall &amp; Hanna 2004]</a>. An open, humanist typeface read faster than a square one, and shrinking the text hurt the square face far more <a class="cite" href="#ref-dobres2016">[Dobres et al. 2016]</a>.</p>
+    <p class="do">Dark text on a light background, large, in an open typeface.</p></div>
+</section>
+
+<section id="second">
+  <div class="sec-head"><span class="tc">00:01</span><h2>The first second</h2></div>
+  <div class="rule"><h3>Start rising immediately <span class="chip moderate">Moderate</span></h3>
+    <p>Every best-performing emotional path began with the fastest possible rise, and a flat start was never optimal <a class="cite" href="#ref-teixeira2012">[Teixeira et al. 2012]</a>. In a real YouTube field study, an ad that opened on a high-energy moment kept 73% of viewers at 5–10 seconds against 49% for a calm opening <a class="cite" href="#ref-belanche2017">[Belanche et al. 2017]</a>.</p></div>
+  <div class="rule"><h3>Surprise first, joy to hold <span class="chip moderate">Moderate</span></h3>
+    <p>Surprise concentrated gaze about three times more than joy and protected most at the very start. The rate at which joy rose did most to stop people leaving <a class="cite" href="#ref-teixeira2012">[Teixeira et al. 2012]</a>. Keep the surprise about the subject: in forced pre-roll ads, surprise raised skipping <a class="cite" href="#ref-preroll2017">[Campbell et al. 2017]</a>.</p></div>
+  <div class="rule"><h3>Start the motion, don't arrive mid-motion <span class="chip test">Test it</span></h3>
+    <p>An object that starts moving grabs attention, but one already moving when the screen appears gives no advantage over a still one <a class="cite" href="#ref-motion2003">[Abrams &amp; Christ 2003]</a>. Objects growing toward the viewer capture attention, while receding ones and colour changes on their own don't <a class="cite" href="#ref-franconeri2003">[Franconeri &amp; Simons 2003]</a>. Moving pictures raised arousal over the same pictures held still <a class="cite" href="#ref-detenber1998">[Detenber et al. 1998]</a>.</p>
+    <p class="do">Try a still frame for about 0.3 s, then a push-in.</p></div>
+  <div class="rule"><h3>No logo, no intro card <span class="chip strong">Strong</span></h3>
+    <p>Early branding raised zapping, skipping or avoidance in five separate studies <a class="cite" href="#ref-teixeira2012">[Teixeira et al. 2012]</a> <a class="cite" href="#ref-zapping2022">[Becker et al. 2022]</a> <a class="cite" href="#ref-pulsing2010">[Teixeira et al. 2010]</a> <a class="cite" href="#ref-tellis2019">[Tellis et al. 2019]</a> <a class="cite" href="#ref-preroll2017">[Campbell et al. 2017]</a>. Brief, small brand "pulses" beat both no branding and one long reveal <a class="cite" href="#ref-pulsing2010">[Teixeira et al. 2010]</a>.</p></div>
+  <div class="rule"><h3>No loud slam <span class="chip moderate">Moderate</span></h3>
+    <p>A loud opening raised ad skipping <a class="cite" href="#ref-preroll2017">[Campbell et al. 2017]</a>.</p></div>
+</section>
+
+<section id="five">
+  <div class="sec-head"><span class="tc">00:05</span><h2>Front-load the first five seconds</h2></div>
+  <div class="rule"><h3>The opening does half the work <span class="chip moderate">Moderate</span></h3>
+    <p>Half of a 30-second ad's effect was delivered in its first 5 seconds, and a 7-second ad delivered 60% of a 30-second ad's recall <a class="cite" href="#ref-varan2019">[Varan et al. 2020]</a>. This was measured under forced viewing.</p></div>
+  <div class="rule"><h3>Irritation is the swipe trigger <span class="chip strong">Strong</span></h3>
+    <p>Across 237,851 real TV viewings, irritation predicted zapping and a lack of enjoyment didn't <a class="cite" href="#ref-zapping2022">[Becker et al. 2022]</a>.</p>
+    <p class="do">Cut hype, exaggeration, clutter, shouting and hard sells before asking whether the video is exciting enough.</p></div>
+</section>
+
+<section id="danger">
+  <div class="sec-head"><span class="tc">00:10–00:15</span><h2>The danger zone</h2></div>
+  <div class="rule"><h3>Plan a second rise before ten seconds <span class="chip moderate">Moderate</span></h3>
+    <p>The risk of zapping rose to a peak at about 11–12 seconds <a class="cite" href="#ref-teixeira2012">[Teixeira et al. 2012]</a>. Stopping rose at the start and again near the end <a class="cite" href="#ref-elpers2003">[Woltman Elpers et al. 2003]</a>, and skipping had a second bump near 15 seconds <a class="cite" href="#ref-emoskip2022">[Jeon et al. 2022]</a>. In real household TV data, the risk of switching away peaked about 10 seconds into an ad <a class="cite" href="#ref-gustafson2007">[Gustafson &amp; Siddarth 2007]</a>.</p></div>
+</section>
+
+<section id="middle">
+  <div class="sec-head"><span class="tc">the middle</span><h2>Pacing</h2></div>
+  <div class="rule"><h3>Peak, valley, peak <span class="chip moderate">Moderate</span></h3>
+    <p>Repeated rises kept the most viewers, and saving the key moment for the finale was the worst path measured <a class="cite" href="#ref-teixeira2012">[Teixeira et al. 2012]</a>. Alternating a tense beat with a warm one beat grouping them (liking 4.01 vs 3.41), though not for music content, where the effect wasn't significant <a class="cite" href="#ref-berger2021">[Berger et al. 2021]</a>.</p></div>
+  <div class="rule"><h3>One idea at a time <span class="chip strong">Strong</span></h3>
+    <p>Information made people stop watching, and high entertainment combined with dense information was the worst mix measured <a class="cite" href="#ref-elpers2003">[Woltman Elpers et al. 2003]</a>. A facts framing cut viewing time while a feelings framing raised it <a class="cite" href="#ref-olney1991">[Olney et al. 1991]</a>. Informative posts earned fewer likes <a class="cite" href="#ref-lee2018">[Lee et al. 2018]</a> <a class="cite" href="#ref-dong2024">[Dong et al. 2024]</a>. Overload hit when fast cutting met dense information <a class="cite" href="#ref-lang2007">[Lang et al. 2007]</a>.</p>
+    <p class="do">One fact per beat, told as a feeling, and never on top of a fast-cut stretch.</p></div>
+  <div class="rule"><h3>Match the cut pace to the content <span class="chip moderate">Moderate</span></h3>
+    <p>Emotional messages were remembered best at slow-to-medium cutting, while calm messages tolerated fast cutting <a class="cite" href="#ref-lang1999">[Lang et al. 1999]</a>. A burst of one shot per second reads as riveting but can't be sustained <a class="cite" href="#ref-cutting2010">[Cutting et al. 2010]</a>. Average Hollywood shots shrank from about 10 seconds to under 4 since 1935 <a class="cite" href="#ref-cutting2011">[Cutting et al. 2011]</a>.</p>
+    <p class="do">Cut fastest on calm, informational stretches and ease off at the emotional peak.</p></div>
+  <div class="rule"><h3>Breaks renew enjoyment <span class="chip test">Test it</span></h3>
+    <p>A short break made an enjoyable experience enjoyable again (64.0 vs 37.9 in the final seconds), even though people predicted breaks would hurt <a class="cite" href="#ref-nelson2008">[Nelson &amp; Meyvis 2008]</a>.</p>
+    <p class="do">Try a brief drop in the music or a cut-away in a long stretch.</p></div>
+  <div class="rule"><h3>Move things together <span class="chip test">Test it</span></h3>
+    <p>Crowded moving items were hard to follow, and staggering an animation rarely helped viewers keep track <a class="cite" href="#ref-chevalier2014">[Chevalier et al. 2014]</a>.</p>
+    <p class="do">Animate related items together and keep moving items spaced.</p></div>
+  <div class="rule"><h3>Ease every move, and animate only what means something <span class="chip moderate">Moderate</span></h3>
+    <p>Moves that start and end slowly were tracked most accurately <a class="cite" href="#ref-dragicevic2011">[Dragicevic et al. 2011]</a>. Animated transitions beat hard cuts for following a change, about one second long, and multi-step animations did worse <a class="cite" href="#ref-heer2007">[Heer &amp; Robertson 2007]</a>. Across 76 comparisons, animation beat still pictures only when the motion was the content; decorative motion did nothing <a class="cite" href="#ref-hoffler2007">[Höffler &amp; Leutner 2007]</a>.</p></div>
+  <div class="rule"><h3>A few well-placed sound events <span class="chip moderate">Moderate</span></h3>
+    <p>More voice changes, sound effects and music entrances raised recall from 56% to 76% with no overload at the levels tested <a class="cite" href="#ref-potter2006">[Potter &amp; Choi 2006]</a>.</p></div>
+  <div class="rule"><h3>Keep a causal through-line <span class="chip moderate">Moderate</span></h3>
+    <p>Scenes told in chronological, causal order held viewers more than the same scenes shuffled (d = 0.88) <a class="cite" href="#ref-cohen2015">[Cohen et al. 2015]</a>.</p></div>
+</section>
+
+<section id="end">
+  <div class="sec-head"><span class="tc">the end</span><h2>The peak and the end</h2></div>
+  <div class="rule"><h3>The peak and the end decide the verdict <span class="chip strong">Strong</span></h3>
+    <p>Liking tracked the best moment and the final moment (r ≈ .95) more than all moments combined (r = .815). Raising the peak raised liking, lowering the end lowered it, adding neutral length changed nothing, and time after the peak hurt <a class="cite" href="#ref-baumgartner1997">[Baumgartner et al. 1997]</a>. Watch time tracked accumulated peaks, not average engagement (R² = .65) <a class="cite" href="#ref-linzak2022">[Lin et al. 2022]</a>. Only improving both the peak and the end beat the control on accuracy <a class="cite" href="#ref-peakend-learning">[Xie &amp; Li 2026]</a>. Adding a weaker item after the best one lowered the overall rating <a class="cite" href="#ref-do2008">[Do et al. 2008]</a>. Across film clips, the peak and the final moments predicted the overall rating while length barely mattered <a class="cite" href="#ref-fredrickson1993">[Fredrickson &amp; Kahneman 1993]</a>.</p>
+    <p class="do">Finish soon after your highest moment.</p></div>
+  <div class="rule"><h3>End on a positive emotion <span class="chip strong">Strong</span></h3>
+    <p>Positive content won on sharing or likes in all five studies here <a class="cite" href="#ref-tellis2019">[Tellis et al. 2019]</a> <a class="cite" href="#ref-berger2012">[Berger &amp; Milkman 2012]</a> <a class="cite" href="#ref-guadagno2013">[Guadagno et al. 2013]</a> <a class="cite" href="#ref-dong2024">[Dong et al. 2024]</a> <a class="cite" href="#ref-lee2018">[Lee et al. 2018]</a>. High-energy positive emotions such as amusement, joy and awe had the edge in experiments <a class="cite" href="#ref-berger2011">[Berger 2011]</a> <a class="cite" href="#ref-berger2012">[Berger &amp; Milkman 2012]</a>. Sadness lowered sharing <a class="cite" href="#ref-berger2012">[Berger &amp; Milkman 2012]</a> and raised skipping <a class="cite" href="#ref-preroll2017">[Campbell et al. 2017]</a>.</p></div>
+  <div class="rule"><h3>Ask for comments at the end, not the start <span class="chip indirect">Indirect</span></h3>
+    <p>A question in a post raised comments by 61% but cut likes by 15% <a class="cite" href="#ref-lee2018">[Lee et al. 2018]</a>.</p></div>
+</section>
+
+<section id="words">
+  <div class="sec-head"><span class="tc">on screen</span><h2>Words: titles, hooks, captions</h2></div>
+  <div class="rule"><h3>Say it plainly <span class="chip moderate">Moderate</span></h3>
+    <p>Plain headlines beat every clickbait form on both curiosity and clicks, and questions were the weakest of all <a class="cite" href="#ref-clickbait2021">[Molina et al. 2021]</a>.</p></div>
+  <div class="rule"><h3>Name the subject, hold back the payoff <span class="chip strong">Strong</span></h3>
+    <p>Across 8,977 real headline tests, concrete wording won overall, though adding more concreteness only helped when the alternatives were vague <a class="cite" href="#ref-curiogap2025">[Aubin Le Quéré &amp; Matias 2025]</a>.</p></div>
+  <div class="rule"><h3>One sad-tinged word can help; fear and outrage hurt <span class="chip strong">Strong</span></h3>
+    <p>In 12,448 headline experiments, each negative word raised clicks by 2.3%, driven by sadness. Fear and moral outrage lowered clicks <a class="cite" href="#ref-robertson2023">[Robertson et al. 2023]</a>. This measured clicks to read, not sharing or watching to the end.</p></div>
+  <div class="rule"><h3>Outcome first, cause last <span class="chip moderate">Moderate</span></h3>
+    <p>Stating what happened and holding back why produced the most curiosity. Telling it in order produced the most suspense. Summarising everything up front was the least enjoyable <a class="cite" href="#ref-knobloch2004">[Knobloch et al. 2004]</a>.</p></div>
+  <div class="rule"><h3>Real uncertainty, positive payoff <span class="chip moderate">Moderate</span></h3>
+    <p>Curiosity rose steadily with genuine uncertainty in six experiments. But when the answer looked like bad news, people were less willing to wait for it <a class="cite" href="#ref-vanlieshout2021a">[van Lieshout et al. 2021a]</a> <a class="cite" href="#ref-vanlieshout2021b">[van Lieshout et al. 2021b]</a>.</p></div>
+  <div class="rule"><h3>Captions help viewers, not retention <span class="chip indirect">Indirect</span></h3>
+    <p>Subtitles barely changed how much of a video people watched (Cramér's V = .01) <a class="cite" href="#ref-pascualferra2024">[Pascual-Ferrá et al. 2024]</a>. Keep them for accessibility and silent viewing, and don't count on them to hold people.</p></div>
+  <div class="rule"><h3>Animate the hard part; don't print the narration <span class="chip moderate">Moderate</span></h3>
+    <p>On-screen text that repeated the voiceover didn't improve recall over no graphic and made viewers work harder, while an animated graphic doubled delayed recall. Graphics helped hard stories and hurt easy ones <a class="cite" href="#ref-fox2004">[Fox et al. 2004]</a>.</p>
+    <p class="do">Show dense information with motion. Leave easy lines alone.</p></div>
+</section>
+
+<section id="voice">
+  <div class="sec-head"><span class="tc">voiceover</span><h2>Voice</h2></div>
+  <div class="rule"><h3>Set the pace by how much a line carries <span class="chip moderate">Moderate</span></h3>
+    <p>Listeners remembered most at about 170 words per minute on information-heavy lines and about 190 on light ones. Rates of 210–230 overloaded them, and slow speech on thin content did worst <a class="cite" href="#ref-rodero2016">[Rodero 2015]</a>. Fast speech cost listening effort <a class="cite" href="#ref-muller2019">[Müller et al. 2019]</a> and slowed listeners' guesses about what came next <a class="cite" href="#ref-yin2026">[Yin et al. 2026]</a>. Faster syllables cut attention and recall, while trimming pauses did not <a class="cite" href="#ref-chattopadhyay2003">[Chattopadhyay et al. 2003]</a>.</p>
+    <p class="do">Never speed up into a reveal, and never drag a light line. To save time, cut pauses, not syllable speed.</p></div>
+  <div class="rule"><h3>Start the key line high and fall <span class="chip moderate">Moderate</span></h3>
+    <p>A high-to-low pitch within a sentence beat flat and rising delivery on recall (21.48% vs 17.64%) and on arousal <a class="cite" href="#ref-rodero2017">[Rodero et al. 2017]</a>.</p></div>
+  <div class="rule"><h3>Mark where each beat starts and ends <span class="chip moderate">Moderate</span></h3>
+    <p>Speakers close a topic on a falling pitch, open the next one higher, and pause longer between topics than within one. Listeners spot those boundaries from melody and pause alone <a class="cite" href="#ref-swerts1994">[Swerts &amp; Geluykens 1994]</a>.</p></div>
+  <div class="rule"><h3>Build, pause, accent <span class="chip test">Test it</span></h3>
+    <p>Storytellers build to a climax with rising pitch and loudness, pause about a second, then put one short accent on the reveal. Listeners preferred the gentle end of these ranges, and full exaggeration sounded "too much" in synthetic speech <a class="cite" href="#ref-theune2006">[Theune et al. 2006]</a>.</p></div>
+  <div class="rule"><h3>Each emotion has its own sound <span class="chip moderate">Moderate</span></h3>
+    <p>Elation has the highest pitch and loudness. Interest sits near neutral, pride is lower and quieter, and sadness is slower and softer <a class="cite" href="#ref-banse1996">[Banse &amp; Scherer 1996]</a>. High-energy positive voices sound smooth and bright, while a jagged, loud voice reads as anger <a class="cite" href="#ref-goudbeek2010">[Goudbeek &amp; Scherer 2010]</a>.</p>
+    <p class="do">Direct the voice by emotion, not just "more energy".</p></div>
+  <div class="rule"><h3>Stress the new word <span class="chip moderate">Moderate</span></h3>
+    <p>Putting the accent on the new information made sentences faster to understand, while flat delivery was slowest <a class="cite" href="#ref-bock1983">[Bock &amp; Mazzella 1983]</a>. A contrast accent on the key word raised later recognition from 77% to 91% <a class="cite" href="#ref-fraundorf2010">[Fraundorf et al. 2010]</a>.</p></div>
+  <div class="rule"><h3>Keep the pitch natural and skip the creak <span class="chip moderate">Moderate</span></h3>
+    <p>Raising pitch by 20% made speakers sound less truthful and more nervous, and slowing to 77% of normal speed was least persuasive <a class="cite" href="#ref-apple1979">[Apple et al. 1979]</a>. A creaky "vocal fry" delivery lost to a normal voice in most comparisons <a class="cite" href="#ref-anderson2014">[Anderson et al. 2014]</a>. A falling ending, a lower pitch and a brisk pace all made speakers sound more confident <a class="cite" href="#ref-guyer2018">[Guyer et al. 2018]</a>, and listeners heard pitch variation, not speed, as liveliness <a class="cite" href="#ref-hincks2005">[Hincks 2005]</a>.</p></div>
+  <div class="rule"><h3>Use the most natural voice you can <span class="chip moderate">Moderate</span></h3>
+    <p>A low-quality synthetic voice was trusted less and seen as less credible than a human one, while a high-quality synthetic voice was not significantly less credible <a class="cite" href="#ref-chiou2020">[Chiou et al. 2020]</a>. Modern synthetic voices matched humans on credibility but sounded less human and less engaging <a class="cite" href="#ref-craig2017">[Craig &amp; Schroeder 2017]</a>.</p>
+    <p class="do">Use the best voice you have and spend the effort on expressive delivery.</p></div>
+</section>
+
+<section id="sound">
+  <div class="sec-head"><span class="tc">mix</span><h2>Sound, music, humour and AI labels</h2></div>
+  <div class="rule"><h3>A clean, rhythmic music bed <span class="chip test">Test it</span></h3>
+    <p>Medium syncopation was liked most and made people want to move, and harsh dissonance flattened that effect <a class="cite" href="#ref-groove-harmonic">[Matthews et al. 2019]</a>. The most surprising music was liked least <a class="cite" href="#ref-gold-surprise">[Gold et al. 2023]</a> <a class="cite" href="#ref-gold2019">[Gold et al. 2019]</a>, and pleasure peaked when a surprise followed a predictable setup <a class="cite" href="#ref-cheung2019">[Cheung et al. 2019]</a>.</p></div>
+  <div class="rule"><h3>Music sets how the scene is read <span class="chip moderate">Moderate</span></h3>
+    <p>The same ambiguous scene was read as friendly or threatening depending on the music, and viewers remembered details that matched the music's mood, including some that never appeared <a class="cite" href="#ref-boltz2001">[Boltz 2001]</a>. In radio ads, recognisable sung vocals raised attention and memory, while an instrumental bed did no better than silence <a class="cite" href="#ref-allan2006">[Allan 2006]</a>. The same neutral face was liked more under warm music and less under tense music <a class="cite" href="#ref-hoeckner2011">[Hoeckner et al. 2011]</a>, and a review of 24 studies found the effect strongest on ambiguous pictures and when the music starts first <a class="cite" href="#ref-herget2019">[Herget &amp; A.-K. 2019]</a>.</p></div>
+  <div class="rule"><h3>Build musical peaks the way chills are built <span class="chip test">Test it</span></h3>
+    <p>Listeners got chills on the same passages, and each one combined a soft-to-loud rise, a new instrument or voice entering, a widening range and a brief harmonic surprise. Familiarity with the music didn't matter <a class="cite" href="#ref-guhn2007">[Guhn et al. 2007]</a>.</p></div>
+  <div class="rule"><h3>Light humour about the subject <span class="chip moderate">Moderate</span></h3>
+    <p>Humour's biggest effect is on attention (r = .416 in a meta-analysis) <a class="cite" href="#ref-humor2008">[Eisend 2009]</a>. It reduced ad skipping <a class="cite" href="#ref-preroll2017">[Campbell et al. 2017]</a> and earned likes <a class="cite" href="#ref-lee2018">[Lee et al. 2018]</a>, but read as irritating in some TV ads <a class="cite" href="#ref-zapping2022">[Becker et al. 2022]</a>.</p></div>
+  <div class="rule"><h3>Faces help less than you'd think <span class="chip indirect">Indirect</span></h3>
+    <p>Eyes reach a face within about a tenth of a second <a class="cite" href="#ref-crouzet2010">[Crouzet et al. 2010]</a>, but faces raised likes on one platform and made no difference on another <a class="cite" href="#ref-faces2014">[Bakhshi et al. 2014]</a> <a class="cite" href="#ref-lixie2019">[Li &amp; Xie 2019]</a>.</p></div>
+  <div class="rule"><h3>An AI label doesn't sink a video; low quality does <span class="chip indirect">Indirect</span></h3>
+    <p>Disclosing that a short video was AI-made had no significant overall effect on intention to engage. It mattered through how good the video looked <a class="cite" href="#ref-chen2025ai">[Chen et al. 2025]</a>.</p></div>
+</section>
+
+<section id="length">
+  <div class="sec-head"><span class="tc">total</span><h2>Length</h2></div>
+  <div class="rule"><h3>Shorter keeps more viewers <span class="chip moderate">Moderate</span></h3>
+    <p>Longer ads were skipped more <a class="cite" href="#ref-preroll2017">[Campbell et al. 2017]</a>. A 58-second cut beat a 115-second cut at every point viewers dropped off <a class="cite" href="#ref-pascualferra2024">[Pascual-Ferrá et al. 2024]</a>, and length was the one design feature that predicted how much of a video people watched <a class="cite" href="#ref-doherty2022">[Doherty 2022]</a>. Across 6.9 million video sessions, median viewing topped out around 6 minutes however long the video ran <a class="cite" href="#ref-guo2014">[Guo et al. 2014]</a>, and 15-second ads were switched away from about two-thirds as often as 30-second ones <a class="cite" href="#ref-gustafson2007">[Gustafson &amp; Siddarth 2007]</a>.</p>
+    <p class="do">Make it as short as the story allows. Every extra second must build toward the peak.</p></div>
+</section>
+
+<section id="subject">
+  <div class="sec-head"><span class="tc">the idea</span><h2>Choosing the subject</h2></div>
+  <div class="rule"><h3>Familiar subject, fresh execution <span class="chip moderate">Moderate</span></h3>
+    <p>Familiar brands reduced zapping while familiar ads raised it <a class="cite" href="#ref-teixeira2012">[Teixeira et al. 2012]</a> <a class="cite" href="#ref-elpers2003">[Woltman Elpers et al. 2003]</a>. Feeling that a subject was relevant drove the peaks that drove watch time <a class="cite" href="#ref-linzak2022">[Lin et al. 2022]</a>.</p></div>
+  <div class="rule"><h3>Distinctive within its category <span class="chip moderate">Moderate</span></h3>
+    <p>Hit songs were "optimally differentiated": close to their genre, but not too close <a class="cite" href="#ref-askin2017">[Askin &amp; Mauskapf 2017]</a>. Songs whose lyrics stood out from their genre ranked higher <a class="cite" href="#ref-berger2018">[Berger &amp; Packard 2018]</a>. Novel beats bizarre <a class="cite" href="#ref-olney1991">[Olney et al. 1991]</a>, and creative ads were zapped less <a class="cite" href="#ref-zapping2022">[Becker et al. 2022]</a>.</p></div>
+</section>
+
+<section id="checklist">
+  <div class="sec-head"><span class="tc">before you export</span><h2>The checklist</h2></div>
+  <p class="intro">Your ticks are saved in this browser only.</p>
+  <ol class="check" id="check">
+    <li><input type="checkbox" id="c1"><label for="c1"><b>Subject.</b> Something viewers already know and care about, with an angle that stands out within its category.</label></li>
+    <li><input type="checkbox" id="c2"><label for="c2"><b>Title.</b> A plain statement that names the subject and holds back the payoff. No question, no hype, no fear or outrage.</label></li>
+    <li><input type="checkbox" id="c3"><label for="c3"><b>First frame.</b> One focal point, low clutter, a strong composition, a clear colour temperature, and large dark-on-light text.</label></li>
+    <li><input type="checkbox" id="c4"><label for="c4"><b>First second.</b> A relevant surprise and the start of a rise. Motion starts on screen. No logo and no loud slam.</label></li>
+    <li><input type="checkbox" id="c5"><label for="c5"><b>Order.</b> Outcome first and cause held for the payoff, or tell it in order for suspense. Never summary-first.</label></li>
+    <li><input type="checkbox" id="c6"><label for="c6"><b>Second rise.</b> A new peak lands before 10 seconds.</label></li>
+    <li><input type="checkbox" id="c7"><label for="c7"><b>Density.</b> One fact per beat, told as a feeling. No dense fact on a fast-cut stretch.</label></li>
+    <li><input type="checkbox" id="c8"><label for="c8"><b>Pacing.</b> Fast cuts on calm stretches and slower at the emotional peak, with one sound event per beat change.</label></li>
+    <li><input type="checkbox" id="c9"><label for="c9"><b>Voice.</b> About 170 wpm on dense lines and up to 190 on light ones, falling through each key line, with a pause before the reveal.</label></li>
+    <li><input type="checkbox" id="c10"><label for="c10"><b>Irritation pass.</b> Hype, exaggeration, clutter, shouting and hard sell all removed.</label></li>
+    <li><input type="checkbox" id="c11"><label for="c11"><b>End.</b> Finish soon after the highest moment, on a positive emotion. Ask for comments here, not in the hook.</label></li>
+    <li><input type="checkbox" id="c12"><label for="c12"><b>Length and testing.</b> As short as the story allows. Change one thing per video and judge by the median of several.</label></li>
+  </ol>
+  <div class="btnrow"><button type="button" id="copy">Copy checklist</button><button type="button" id="reset">Clear ticks</button><span id="copied" aria-live="polite"></span></div>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="tc">references</span><h2>Sources</h2></div>
+  <p class="intro">Every paper below was read in full. The library behind this guide holds only studies with original data: randomised experiments, pre-registered studies, field datasets and meta-analyses.</p>
+  <ol class="refs">
+    <li id="ref-motion2003"><span class="rl">Abrams &amp; Christ 2003.</span>Abrams &amp; Christ (2003). "Motion Onset Captures Attention." <em>Psychological Science</em> 14(5), 427–432. <a href="https://doi.org/10.1111/1467-9280.01458">doi:10.1111/1467-9280.01458</a></li>
+    <li id="ref-allan2006"><span class="rl">Allan 2006.</span>Allan, D. (2006). "Effects of Popular Music in Advertising on Attention and Memory." <em>Journal of Advertising Research</em> 46(4), 434–444. <a href="https://doi.org/10.2501/S0021849906060491">doi:10.2501/S0021849906060491</a></li>
+    <li id="ref-anderson2014"><span class="rl">Anderson et al. 2014.</span>Anderson, R. C., Klofstad, C. A., Mayew, W. J. &amp; Venkatachalam, M. (2014). "Vocal Fry May Undermine the Success of Young Women in the Labor Market." <em>PLoS ONE</em> 9(5), e97506. <a href="https://doi.org/10.1371/journal.pone.0097506">doi:10.1371/journal.pone.0097506</a></li>
+    <li id="ref-apple1979"><span class="rl">Apple et al. 1979.</span>Apple, Streeter &amp; Krauss (1979). "Effects of Pitch and Speech Rate on Personal Attributions." <em>Journal of Personality and Social Psychology</em> 37(5), 715–727. <a href="https://doi.org/10.1037/0022-3514.37.5.715">doi:10.1037/0022-3514.37.5.715</a></li>
+    <li id="ref-askin2017"><span class="rl">Askin &amp; Mauskapf 2017.</span>Askin &amp; Mauskapf (2017). "What Makes Popular Culture Popular? Product Features and Optimal Differentiation in Music." <em>American Sociological Review</em> 82(5), 1–35. <a href="https://doi.org/10.1177/0003122417728662">doi:10.1177/0003122417728662</a></li>
+    <li id="ref-curiogap2025"><span class="rl">Aubin Le Quéré &amp; Matias 2025.</span>Aubin Le Quéré &amp; Matias (2025). "When curiosity gaps backfire: effects of headline concreteness on information selection decisions." <em>Scientific Reports</em> 15:994. <a href="https://doi.org/10.1038/s41598-024-81575-9">doi:10.1038/s41598-024-81575-9</a></li>
+    <li id="ref-faces2014"><span class="rl">Bakhshi et al. 2014.</span>Bakhshi, Shamma &amp; Gilbert (2014). "Faces Engage Us: Photos with Faces Attract More Likes and Comments on Instagram." CHI 2014. <a href="https://doi.org/10.1145/2556288.2557403">doi:10.1145/2556288.2557403</a></li>
+    <li id="ref-banse1996"><span class="rl">Banse &amp; Scherer 1996.</span>Banse &amp; Scherer (1996). "Acoustic profiles in vocal emotion expression." <em>JPSP</em> 70(3), 614–636. <a href="https://doi.org/10.1037/0022-3514.70.3.614">doi:10.1037/0022-3514.70.3.614</a></li>
+    <li id="ref-bar2006"><span class="rl">Bar et al. 2006.</span>Bar, Neta &amp; Linz (2006). "Very first impressions." <em>Emotion</em> 6(2), 269–278. <a href="https://doi.org/10.1037/1528-3542.6.2.269">doi:10.1037/1528-3542.6.2.269</a></li>
+    <li id="ref-baumgartner1997"><span class="rl">Baumgartner et al. 1997.</span>Baumgartner, Sujan &amp; Padgett (1997). "Patterns of Affective Reactions to Advertisements: The Integration of Moment-to-Moment Responses into Overall Judgments." <em>Journal of Marketing Research</em> 34(2), 219–232. <a href="https://doi.org/10.1177/002224379703400203">doi:10.1177/002224379703400203</a></li>
+    <li id="ref-zapping2022"><span class="rl">Becker et al. 2022.</span>Becker, Scholdra, Berkmann &amp; Reinartz (2022/2023). "The Effect of Content on Zapping in TV Advertising." <em>Journal of Marketing</em> 87(2), 275–297. <a href="https://doi.org/10.1177/00222429221105818">doi:10.1177/00222429221105818</a></li>
+    <li id="ref-belanche2017"><span class="rl">Belanche et al. 2017.</span>Belanche, Flavián &amp; Pérez-Rueda (2017). "Understanding Interactive Online Advertising: Congruence and Product Involvement in Highly and Lowly Arousing, Skippable Video Ads." <em>Journal of Interactive Marketing</em> 37, 75–88. <a href="https://doi.org/10.1016/j.intmar.2016.06.004">doi:10.1016/j.intmar.2016.06.004</a></li>
+    <li id="ref-berger2012"><span class="rl">Berger &amp; Milkman 2012.</span>Berger &amp; Milkman (2012). "What Makes Online Content Viral?" <em>Journal of Marketing Research</em> 49(2), 192–205. <a href="https://doi.org/10.1509/jmr.10.0353">doi:10.1509/jmr.10.0353</a> (JMR, April 2012, Vol. XLIX)</li>
+    <li id="ref-berger2018"><span class="rl">Berger &amp; Packard 2018.</span>Berger &amp; Packard (2018). "Are Atypical Things More Popular?" <em>Psychological Science</em> 29(7), 1–7. <a href="https://doi.org/10.1177/0956797618759465">doi:10.1177/0956797618759465</a></li>
+    <li id="ref-berger2011"><span class="rl">Berger 2011.</span>Berger (2011). "Arousal Increases Social Transmission of Information." <em>Psychological Science</em> 22(7), 891–893. <a href="https://doi.org/10.1177/0956797611413294">doi:10.1177/0956797611413294</a></li>
+    <li id="ref-berger2021"><span class="rl">Berger et al. 2021.</span>Berger, Kim &amp; Meyer (2021). "What Makes Content Engaging? How Emotional Dynamics Shape Success." <em>Journal of Consumer Research</em> 48(2). <a href="https://doi.org/10.1093/jcr/ucab010">doi:10.1093/jcr/ucab010</a></li>
+    <li id="ref-bezdek2015"><span class="rl">Bezdek et al. 2015.</span>Bezdek, Gerrig, Wenzel, Shin, Revill &amp; Schumacher (2015). "Neural evidence that suspense narrows attentional focus." <em>Neuroscience</em> 303, (accepted manuscript, accepted 25 June 2015). <a href="https://doi.org/10.1016/j.neuroscience.2015.06.055">doi:10.1016/j.neuroscience.2015.06.055</a></li>
+    <li id="ref-bock1983"><span class="rl">Bock &amp; Mazzella 1983.</span>Bock &amp; Mazzella (1983). "Intonational marking of given and new information: Some consequences for comprehension." <em>Memory &amp; Cognition</em> 11(1), 64–76. <a href="https://doi.org/10.3758/BF03197663">doi:10.3758/BF03197663</a> (DOI not printed in the PDF; from standard citation, unverified here)</li>
+    <li id="ref-boltz2001"><span class="rl">Boltz 2001.</span>Boltz (2001). "Musical Soundtracks as a Schematic Influence on the Cognitive Processing of Filmed Events." <em>Music Perception</em> 18(4), 427–454. <a href="https://doi.org/10.1525/mp.2001.18.4.427">doi:10.1525/mp.2001.18.4.427</a></li>
+    <li id="ref-borghol2012"><span class="rl">Borghol et al. 2012.</span>Borghol, Ardon, Carlsson, Eager &amp; Mahanti (2012). "The Untold Story of the Clones: Content-agnostic Factors that Impact YouTube Video Popularity." <em>KDD '12</em>, 1186–1194. ACM 978-1-4503-1462-6/12/08. <a href="https://doi.org/10.1145/2339530.2339717">doi:10.1145/2339530.2339717</a></li>
+    <li id="ref-brasel2008"><span class="rl">Brasel &amp; Gips 2008.</span>Brasel &amp; Gips (2008). "Breaking Through Fast-Forwarding: Brand Information and Visual Attention." <em>Journal of Marketing</em> 72(6), 31–48. <a href="https://doi.org/10.1509/jmkg.72.6.31">doi:10.1509/jmkg.72.6.31</a></li>
+    <li id="ref-broxton2011"><span class="rl">Broxton et al. 2013.</span>Broxton, Interian, Vaver &amp; Wattenhofer (2013; online 2011). "Catching a viral video." <em>Journal of Intelligent Information Systems</em> 40, 241–259. <a href="https://doi.org/10.1007/s10844-011-0191-2">doi:10.1007/s10844-011-0191-2</a></li>
+    <li id="ref-buchner2007"><span class="rl">Buchner &amp; Baumgartner 2007.</span>Buchner &amp; Baumgartner (2007). "Text–background polarity affects performance irrespective of ambient illumination and colour contrast." <em>Ergonomics</em> 50(7), 1036–1063. <a href="https://doi.org/10.1080/00140130701306413">doi:10.1080/00140130701306413</a></li>
+    <li id="ref-camgoz2002"><span class="rl">Camgöz et al. 2002.</span>Camgöz, Yener &amp; Güvenç (2002). "Effects of Hue, Saturation, and Brightness on Preference." <em>Color Research &amp; Application</em> 27(3), 199–207. <a href="https://doi.org/10.1002/col.10051">doi:10.1002/col.10051</a></li>
+    <li id="ref-preroll2017"><span class="rl">Campbell et al. 2017.</span>Campbell, Mattison Thompson, Grimm &amp; Robson (2017). "Understanding Why Consumers Don't Skip Pre-Roll Video Ads." <em>Journal of Advertising</em> 46(3), 411–423. <a href="https://doi.org/10.1080/00913367.2017.1334249">doi:10.1080/00913367.2017.1334249</a></li>
+    <li id="ref-cerf2009"><span class="rl">Cerf et al. 2009.</span>Cerf, Frady &amp; Koch (2009). "Faces and text attract gaze independent of the task: Experimental data and computer model." <em>Journal of Vision</em> 9(12):10, 1–15. <a href="https://doi.org/10.1167/9.12.10">doi:10.1167/9.12.10</a></li>
+    <li id="ref-chattopadhyay2003"><span class="rl">Chattopadhyay et al. 2003.</span>Chattopadhyay, Dahl, Ritchie &amp; Shahin (2003). "Hearing Voices: The Impact of Announcer Speech Characteristics on Consumer Response to Broadcast Advertising." <em>Journal of Consumer Psychology</em> 13(3), 198–204. <a href="https://doi.org/10.1207/S15327663JCP1303_02">doi:10.1207/S15327663JCP1303_02</a> (DOI not printed in the PDF; confirmed from the PsycNet record)</li>
+    <li id="ref-chen2025ai"><span class="rl">Chen et al. 2025.</span>Chen, Wang &amp; Hao (2025). "AI in the spotlight: The impact of artificial intelligence disclosure on user engagement in short-form videos." <em>Computers in Human Behavior</em> 162:108448. <a href="https://doi.org/10.1016/j.chb.2024.108448">doi:10.1016/j.chb.2024.108448</a></li>
+    <li id="ref-cheung2019"><span class="rl">Cheung et al. 2019.</span>Cheung, Harrison, Meyer, Pearce, Haynes &amp; Koelsch (2019). "Uncertainty and Surprise Jointly Predict Musical Pleasure and Amygdala, Hippocampus, and Auditory Cortex Activity." <em>Current Biology</em> 29, 1–9 (+ e1–e4), December 2, 2019. <a href="https://doi.org/10.1016/j.cub.2019.09.067">doi:10.1016/j.cub.2019.09.067</a></li>
+    <li id="ref-chevalier2014"><span class="rl">Chevalier et al. 2014.</span>Chevalier, Dragicevic &amp; Franconeri (2014). "The Not-so-Staggering Effect of Staggered Animated Transitions on Visual Tracking." <em>IEEE Transactions on Visualization and Computer Graphics</em> 20(12), 2241–2250. <a href="https://doi.org/10.1109/TVCG.2014.2346424">doi:10.1109/TVCG.2014.2346424</a></li>
+    <li id="ref-chiou2020"><span class="rl">Chiou et al. 2020.</span>Chiou, Schroeder &amp; Craig (2020). "How we trust, perceive, and learn from virtual humans: The influence of voice quality." <em>Computers &amp; Education</em> 146, 103756 (accepted version: journal pre-proof, 2019). <a href="https://doi.org/10.1016/j.compedu.2019.103756">doi:10.1016/j.compedu.2019.103756</a></li>
+    <li id="ref-cohen2015"><span class="rl">Cohen et al. 2015.</span>Cohen, A. L., Shavalian, E. &amp; Rube, M. (2015). "The Power of the Picture: How Narrative Film Captures Attention and Disrupts Goal Pursuit." <em>PLOS ONE</em> 10(12), e0144493. <a href="https://doi.org/10.1371/journal.pone.0144493">doi:10.1371/journal.pone.0144493</a></li>
+    <li id="ref-covington2016"><span class="rl">Covington et al. 2016.</span>Covington, Adams &amp; Sargin (2016). "Deep Neural Networks for YouTube Recommendations." <em>RecSys '16</em>, 191–198. <a href="https://doi.org/10.1145/2959100.2959190">doi:10.1145/2959100.2959190</a></li>
+    <li id="ref-craig2017"><span class="rl">Craig &amp; Schroeder 2017.</span>Craig &amp; Schroeder (2017). "Reconsidering the Voice Effect when Learning from a Virtual Human." <em>Computers &amp; Education</em> (accepted manuscript, 2017; PII S0360-1315(17)30165-3, ref CAE 3210). <a href="https://doi.org/10.1016/j.compedu.2017.07.003">doi:10.1016/j.compedu.2017.07.003</a></li>
+    <li id="ref-crane2008"><span class="rl">Crane &amp; Sornette 2008.</span>Crane &amp; Sornette (2008). "Robust dynamic classes revealed by measuring the response function of a social system." <em>PNAS</em> 105(41), 15649–15653. <a href="https://doi.org/10.1073/pnas.0803685105">doi:10.1073/pnas.0803685105</a></li>
+    <li id="ref-crouzet2010"><span class="rl">Crouzet et al. 2010.</span>Crouzet, Kirchner &amp; Thorpe (2010). "Fast saccades toward faces: Face detection in just 100 ms." <em>Journal of Vision</em> 10(4):16, 1–17. <a href="https://doi.org/10.1167/10.4.16">doi:10.1167/10.4.16</a></li>
+    <li id="ref-cutting2010"><span class="rl">Cutting et al. 2010.</span>Cutting, DeLong &amp; Nothelfer (2010). "Attention and the Evolution of Hollywood Film." <em>Psychological Science</em> 21(3), 432–439. <a href="https://doi.org/10.1177/0956797610361679">doi:10.1177/0956797610361679</a></li>
+    <li id="ref-cutting2011"><span class="rl">Cutting et al. 2011.</span>Cutting, Brunick, DeLong, Iricinschi &amp; Candan (2011). "Quicker, faster, darker: Changes in Hollywood film over 75 years." <em>i-Perception</em> 2(6), 569–576. <a href="https://doi.org/10.1068/i0441aap">doi:10.1068/i0441aap</a></li>
+    <li id="ref-detenber1998"><span class="rl">Detenber et al. 1998.</span>Detenber, Simons &amp; Bennett (1998). "Roll 'em!: The effects of picture motion on emotional responses." <em>Journal of Broadcasting &amp; Electronic Media</em> 42(1), 113–127. <a href="https://doi.org/10.1080/08838159809364437">doi:10.1080/08838159809364437</a></li>
+    <li id="ref-do2008"><span class="rl">Do et al. 2008.</span>Do, Rupert &amp; Wolford (2008). "Evaluations of pleasurable experiences: The peak–end rule." <em>Psychonomic Bulletin &amp; Review</em> 15(1), 96–98. <a href="https://doi.org/10.3758/PBR.15.1.96">doi:10.3758/PBR.15.1.96</a></li>
+    <li id="ref-dobres2016"><span class="rl">Dobres et al. 2016.</span>Dobres, Chahine, Reimer, Gould, Mehler &amp; Coughlin (2016). "Utilizing Psychophysical Techniques to Investigate the Effects of Age, Typeface Design, Size, and Display Polarity on Glance Legibility." <em>Ergonomics</em> (online first, accepted manuscript, posted 5 Jan 2016). <a href="https://doi.org/10.1080/00140139.2015.1137637">doi:10.1080/00140139.2015.1137637</a></li>
+    <li id="ref-dobres2017"><span class="rl">Dobres et al. 2017.</span>Dobres, Chahine &amp; Reimer (2017). "Effects of ambient illumination, contrast polarity, and letter size on text legibility under glance-like reading." <em>Applied Ergonomics</em> 60, 68–73. <a href="https://doi.org/10.1016/j.apergo.2016.11.001">doi:10.1016/j.apergo.2016.11.001</a></li>
+    <li id="ref-doherty2022"><span class="rl">Doherty 2022.</span>Doherty (2022). "An investigation into the relationship between multimedia lecture design and learners' engagement behaviours using web log analysis." <em>PLOS ONE</em> 17(9), e0273007. <a href="https://doi.org/10.1371/journal.pone.0273007">doi:10.1371/journal.pone.0273007</a></li>
+    <li id="ref-dong2024"><span class="rl">Dong et al. 2024.</span>Dong, Liu, Xi, Liao &amp; Yang (2024). "Short video marketing: what, when and how short-branded videos facilitate consumer engagement." <em>Internet Research</em> 34(3), 1104–1128. <a href="https://doi.org/10.1108/INTR-02-2022-0121">doi:10.1108/INTR-02-2022-0121</a></li>
+    <li id="ref-dragicevic2011"><span class="rl">Dragicevic et al. 2011.</span>Dragicevic, Bezerianos, Javed, Elmqvist &amp; Fekete (2011). "Temporal Distortion for Animated Transitions." <em>Proceedings of CHI 2011</em> (Vancouver, May 7–12), pp. 2009–2018. <a href="https://doi.org/10.1145/1978942.1979233">doi:10.1145/1978942.1979233</a></li>
+    <li id="ref-humor2008"><span class="rl">Eisend 2009.</span>Eisend (2009). "A meta-analysis of humor in advertising." <em>Journal of the Academy of Marketing Science</em> 37, 191–203. <a href="https://doi.org/10.1007/s11747-008-0096-y">doi:10.1007/s11747-008-0096-y</a></li>
+    <li id="ref-fox2004"><span class="rl">Fox et al. 2004.</span>Fox, Lang, Chung, Lee, Schwartz &amp; Potter (2004). "Picture This: Effects of Graphics on the Processing of Television News." <em>Journal of Broadcasting &amp; Electronic Media</em> 48(4), 646–674. <a href="https://doi.org/10.1207/s15506878jobem4804_7">doi:10.1207/s15506878jobem4804_7</a></li>
+    <li id="ref-franconeri2003"><span class="rl">Franconeri &amp; Simons 2003.</span>Franconeri &amp; Simons (2003). "Moving and looming stimuli capture attention." <em>Perception &amp; Psychophysics</em> 65(7), 999–1010. <a href="https://doi.org/10.3758/BF03194829">doi:10.3758/BF03194829</a></li>
+    <li id="ref-fraundorf2010"><span class="rl">Fraundorf et al. 2010.</span>Fraundorf, Watson &amp; Benjamin (2010). "Recognition memory reveals just how CONTRASTIVE contrastive accenting really is." <em>Journal of Memory and Language</em> 63(3), 367–386. <a href="https://doi.org/10.1016/j.jml.2010.06.004">doi:10.1016/j.jml.2010.06.004</a></li>
+    <li id="ref-fredrickson1993"><span class="rl">Fredrickson &amp; Kahneman 1993.</span>Fredrickson &amp; Kahneman (1993). "Duration Neglect in Retrospective Evaluations of Affective Episodes." <em>Journal of Personality and Social Psychology</em> 65(1), 45–55. <a href="https://doi.org/10.1037/0022-3514.65.1.45">doi:10.1037/0022-3514.65.1.45</a></li>
+    <li id="ref-goel2016"><span class="rl">Goel et al. 2016.</span>Goel, Anderson, Hofman &amp; Watts (2016). "The Structural Virality of Online Diffusion." <em>Management Science</em> 62(1), 180–196. <a href="https://doi.org/10.1287/mnsc.2015.2158">doi:10.1287/mnsc.2015.2158</a></li>
+    <li id="ref-gold2019"><span class="rl">Gold et al. 2019.</span>Gold, Pearce, Mas-Herrero, Dagher &amp; Zatorre (2019). "Predictability and uncertainty in the pleasure of music: a reward for learning?" <em>Journal of Neuroscience</em> (Early Release, accepted manuscript; J. Neurosci 2019; 10.1523/JNEUROSCI.0428-19.2019). <a href="https://doi.org/10.1523/JNEUROSCI.0428-19.2019">doi:10.1523/JNEUROSCI.0428-19.2019</a></li>
+    <li id="ref-gold-surprise"><span class="rl">Gold et al. 2023.</span>Gold, Pearce, Mas-Herrero, Dagher, Chau &amp; Zatorre (2023). "Auditory and reward structures reflect the pleasure of musical expectancies during naturalistic listening." <em>Frontiers in Neuroscience</em> 17, 1209398. <a href="https://doi.org/10.3389/fnins.2023.1209398">doi:10.3389/fnins.2023.1209398</a></li>
+    <li id="ref-gorn2004"><span class="rl">Gorn et al. 2004.</span>Gorn, Chattopadhyay, Sengupta &amp; Tripathi (2004). "Waiting for the Web: How Screen Color Affects Time Perception." <em>Journal of Marketing Research</em> 41(2), 215–225. <a href="https://doi.org/10.1509/jmkr.41.2.215.28668">doi:10.1509/jmkr.41.2.215.28668</a></li>
+    <li id="ref-goudbeek2010"><span class="rl">Goudbeek &amp; Scherer 2010.</span>Goudbeek &amp; Scherer (2010). "Beyond arousal: Valence and potency/control cues in the vocal expression of emotion." <em>Journal of the Acoustical Society of America</em> 128(3), 1322–1336. <a href="https://doi.org/10.1121/1.3466853">doi:10.1121/1.3466853</a></li>
+    <li id="ref-guadagno2013"><span class="rl">Guadagno et al. 2013.</span>Guadagno, Rempala, Murphy &amp; Okdie (2013). "What Makes a Video Go Viral? An Analysis of Emotional Contagion and Internet Memes." <em>Computers in Human Behavior</em> 29(6), 2312–2319. <a href="https://doi.org/10.1016/j.chb.2013.04.016">doi:10.1016/j.chb.2013.04.016</a></li>
+    <li id="ref-guhn2007"><span class="rl">Guhn et al. 2007.</span>Guhn, Hamm &amp; Zentner (2007). "Physiological and Musico-Acoustic Correlates of the Chill Response." <em>Music Perception</em> 24(5), 473–484. <a href="https://doi.org/10.1525/mp.2007.24.5.473">doi:10.1525/mp.2007.24.5.473</a></li>
+    <li id="ref-guo2014"><span class="rl">Guo et al. 2014.</span>Guo, Kim &amp; Rubin (2014). "How Video Production Affects Student Engagement: An Empirical Study of MOOC Videos." <em>Proceedings of the First ACM Conference on Learning @ Scale (L@S 2014)</em>, 41–50. <a href="https://doi.org/10.1145/2556325.2566239">doi:10.1145/2556325.2566239</a></li>
+    <li id="ref-gustafson2007"><span class="rl">Gustafson &amp; Siddarth 2007.</span>Gustafson &amp; Siddarth (2007). "Describing the Dynamics of Attention to TV Commercials: A Hierarchical Bayes Analysis of the Time to Zap an Ad." <em>Journal of Applied Statistics</em> 34(5), 585–609. <a href="https://doi.org/10.1080/02664760701235279">doi:10.1080/02664760701235279</a></li>
+    <li id="ref-guyer2018"><span class="rl">Guyer et al. 2018.</span>Guyer, Fabrigar &amp; Vaughan-Johnston (2018). "Speech Rate, Intonation, and Pitch: Investigating the Bias and Cue Effects of Vocal Confidence on Persuasion." <em>Personality and Social Psychology Bulletin</em> 45(3)[online 2018], 1–17. <a href="https://doi.org/10.1177/0146167218787805">doi:10.1177/0146167218787805</a></li>
+    <li id="ref-hagtvedt2017"><span class="rl">Hagtvedt &amp; Brasel 2017.</span>Hagtvedt &amp; Brasel (2017). "Color Saturation Increases Perceived Product Size." <em>Journal of Consumer Research</em> (forthcoming version; volume/pages not printed in the file), 6 experiments. <a href="https://doi.org/10.1093/jcr/ucx039">doi:10.1093/jcr/ucx039</a> (DOI from the owner's paper list; not printed in the PDF)</li>
+    <li id="ref-hall2004"><span class="rl">Hall &amp; Hanna 2004.</span>Hall &amp; Hanna (2004). "The impact of web page text-background colour combinations on readability, retention, aesthetics and behavioural intention." <em>Behaviour &amp; Information Technology</em> 23(3), 183–195. <a href="https://doi.org/10.1080/01449290410001669932">doi:10.1080/01449290410001669932</a></li>
+    <li id="ref-heer2007"><span class="rl">Heer &amp; Robertson 2007.</span>Heer &amp; Robertson (2007). "Animated Transitions in Statistical Data Graphics." <em>IEEE Transactions on Visualization and Computer Graphics</em> 13(6), 1240–1247. <a href="https://doi.org/10.1109/TVCG.2007.70539">doi:10.1109/TVCG.2007.70539</a></li>
+    <li id="ref-herget2019"><span class="rl">Herget &amp; A.-K. 2019.</span>Herget, A.-K. (2019). "On music's potential to convey meaning in film: A systematic review of empirical evidence." <em>Psychology of Music</em>, 1–29 (advance online). <a href="https://doi.org/10.1177/0305735619835019">doi:10.1177/0305735619835019</a></li>
+    <li id="ref-hincks2005"><span class="rl">Hincks 2005.</span>Hincks (2005). "Measures and perceptions of liveliness in student oral presentation speech: A proposal for an automatic feedback mechanism." <em>System</em> 33(4), 575–591. <a href="https://doi.org/10.1016/j.system.2005.04.002">doi:10.1016/j.system.2005.04.002</a></li>
+    <li id="ref-hoeckner2011"><span class="rl">Hoeckner et al. 2011.</span>Hoeckner, Wyatt, Decety &amp; Nusbaum (2011). "Film Music Influences How Viewers Relate to Movie Characters." <em>Psychology of Aesthetics, Creativity, and the Arts</em> 5(2), 146–153. <a href="https://doi.org/10.1037/a0021544">doi:10.1037/a0021544</a></li>
+    <li id="ref-hoiles2017"><span class="rl">Hoiles et al. 2017.</span>Hoiles, Aprem &amp; Krishnamurthy (2017). "Engagement and Popularity Dynamics of YouTube Videos and Sensitivity to Meta-Data." <em>IEEE Transactions on Knowledge and Data Engineering</em> 29(7), 1–13. <a href="https://doi.org/10.1109/TKDE.2017.2682858">doi:10.1109/TKDE.2017.2682858</a></li>
+    <li id="ref-hoffler2007"><span class="rl">Höffler &amp; Leutner 2007.</span>Höffler &amp; Leutner (2007). "Instructional animation versus static pictures: A meta-analysis." <em>Learning and Instruction</em> 17(6), 722–738. <a href="https://doi.org/10.1016/j.learninstruc.2007.09.013">doi:10.1016/j.learninstruc.2007.09.013</a></li>
+    <li id="ref-emoskip2022"><span class="rl">Jeon et al. 2022.</span>Jeon, Ryoo &amp; Yoon (2022/2024). "Increasing the Efficacy of Emotional Appeal Ads on Online Video-Watching Platforms: The Effects of Goals and Emotional Approach Tendency on Ad-Skipping Behavior." <em>Journal of Advertising</em> 53(1), 1–18. <a href="https://doi.org/10.1080/00913367.2022.2073299">doi:10.1080/00913367.2022.2073299</a></li>
+    <li id="ref-knobloch2004"><span class="rl">Knobloch et al. 2004.</span>Knobloch, Patzig, Mende &amp; Hastall (2004). "Affective News: Effects of Discourse Structure in Narratives on Suspense, Curiosity, and Enjoyment While Reading News and Novels." <em>Communication Research</em> 31(3), 259–287. <a href="https://doi.org/10.1177/0093650203261517">doi:10.1177/0093650203261517</a></li>
+    <li id="ref-lang1999"><span class="rl">Lang et al. 1999.</span>Lang, Bolls, Potter &amp; Kawahara (1999). "The Effects of Production Pacing and Arousing Content on the Information Processing of Television Messages." <em>Journal of Broadcasting &amp; Electronic Media</em> 43(4), 451–475. <a href="https://doi.org/10.1080/08838159909364504">doi:10.1080/08838159909364504</a></li>
+    <li id="ref-lang2007"><span class="rl">Lang et al. 2007.</span>Lang, Park, Sanders-Jackson, Wilson &amp; Wang (2007). "Cognition and Emotion in TV Message Processing: How Valence, Arousing Content, Structural Complexity, and Information Density Affect the Availability of Cognitive Resources." <em>Media Psychology</em> 10(3), 317–338. <a href="https://doi.org/10.1080/15213260701532880">doi:10.1080/15213260701532880</a></li>
+    <li id="ref-lee2018"><span class="rl">Lee et al. 2018.</span>Lee, Hosanagar &amp; Nair (2018). "Advertising Content and Consumer Engagement on Social Media: Evidence from Facebook." <em>Management Science</em> 64(11), 5105–5131. <a href="https://doi.org/10.1287/mnsc.2017.2902">doi:10.1287/mnsc.2017.2902</a></li>
+    <li id="ref-lixie2019"><span class="rl">Li &amp; Xie 2019.</span>Li &amp; Xie (2019/2020). "Is a Picture Worth a Thousand Words? An Empirical Study of Image Content and Social Media Engagement." <em>Journal of Marketing Research</em>. <a href="https://doi.org/10.1177/0022243719881113">doi:10.1177/0022243719881113</a></li>
+    <li id="ref-linzak2022"><span class="rl">Lin et al. 2022.</span>Lin, L.-H., Narender, R. &amp; Zak, P. J. (2022). "Why People Keep Watching: Neurophysiologic Immersion During Video Consumption Increases Viewing Time and Influences Behavior." <em>Frontiers in Behavioral Neuroscience</em> 16:1053053. <a href="https://doi.org/10.3389/fnbeh.2022.1053053">doi:10.3389/fnbeh.2022.1053053</a></li>
+    <li id="ref-lindgaard2006"><span class="rl">Lindgaard et al. 2006.</span>Lindgaard, Fernandes, Dudek &amp; Brown (2006). "Attention web designers: You have 50 milliseconds to make a good first impression!" <em>Behaviour &amp; Information Technology</em> 25(2), 115–126. <a href="https://doi.org/10.1080/01449290500330448">doi:10.1080/01449290500330448</a></li>
+    <li id="ref-groove-harmonic"><span class="rl">Matthews et al. 2019.</span>Matthews, Witek, Heggli, Penhune &amp; Vuust (2019). "The sensation of groove is affected by the interaction of rhythmic and harmonic complexity." <em>PLOS ONE</em> 14(1), e0204539. <a href="https://doi.org/10.1371/journal.pone.0204539">doi:10.1371/journal.pone.0204539</a></li>
+    <li id="ref-clickbait2021"><span class="rl">Molina et al. 2021.</span>Molina, Sundar, Rony, Hassan, Le &amp; Lee (2021). "Does Clickbait Actually Attract More Clicks? Three Clickbait Studies You Must Read." CHI 2021. <a href="https://doi.org/10.1145/3411764.3445753">doi:10.1145/3411764.3445753</a></li>
+    <li id="ref-muller2019"><span class="rl">Müller et al. 2019.</span>Müller, J. A., Wendt, D., Kollmeier, B., Debener, S. &amp; Brand, T. (2019). "Effect of Speech Rate on Neural Tracking of Speech." <em>Frontiers in Psychology</em> 10, 449. <a href="https://doi.org/10.3389/fpsyg.2019.00449">doi:10.3389/fpsyg.2019.00449</a></li>
+    <li id="ref-nelson2008"><span class="rl">Nelson &amp; Meyvis 2008.</span>Nelson &amp; Meyvis (2008). "Interrupted Consumption: Disrupting Adaptation to Hedonic Experiences." <em>Journal of Marketing Research</em> 45(6), 654–664. <a href="https://doi.org/10.1509/jmkr.45.6.654">doi:10.1509/jmkr.45.6.654</a></li>
+    <li id="ref-olney1991"><span class="rl">Olney et al. 1991.</span>Olney, Holbrook &amp; Batra (1991). "Consumer Responses to Advertising: The Effects of Ad Content, Emotions, and Attitude toward the Ad on Viewing Time." <em>Journal of Consumer Research</em> 17 (March), 440–453. <a href="https://doi.org/10.1086/208569">doi:10.1086/208569</a></li>
+    <li id="ref-pascualferra2024"><span class="rl">Pascual-Ferrá et al. 2024.</span>Pascual-Ferrá, Alperstein, Barnett &amp; Rimal (2024). "Assessing Message Deployment During Public Health Emergencies Through Social Media: Empirical Test of Optimizing Content for Effective Dissemination." <em>JMIR Formative Research</em> 2024. <a href="https://doi.org/10.2196/50871">doi:10.2196/50871</a></li>
+    <li id="ref-pieters2010"><span class="rl">Pieters et al. 2010.</span>Pieters, Wedel &amp; Batra (2010). "The Stopping Power of Advertising: Measures and Effects of Visual Complexity." <em>Journal of Marketing</em> 74(5), 48–60. <a href="https://doi.org/10.1509/jmkg.74.5.048">doi:10.1509/jmkg.74.5.048</a></li>
+    <li id="ref-potter2006"><span class="rl">Potter &amp; Choi 2006.</span>Potter &amp; Choi (2006). "The Effects of Auditory Structural Complexity on Attitudes, Attention, Arousal, and Memory." <em>Media Psychology</em> 8(4), 395–419. <a href="https://doi.org/10.1207/s1532785xmep0804_4">doi:10.1207/s1532785xmep0804_4</a></li>
+    <li id="ref-robertson2023"><span class="rl">Robertson et al. 2023.</span>Robertson, Pröllochs, Schwarzenegger, Pärnamets, Van Bavel &amp; Feuerriegel (2023). "Negativity drives online news consumption." <em>Nature Human Behaviour</em> 7(5), 812–822. <a href="https://doi.org/10.1038/s41562-023-01538-4">doi:10.1038/s41562-023-01538-4</a></li>
+    <li id="ref-rodero2016"><span class="rl">Rodero 2015.</span>Rodero, E. (2015, online; 2016 print). "Influence of Speech Rate and Information Density on Recognition: The Moderate Dynamic Mechanism." <em>Media Psychology</em> 19(2), 1–19. <a href="https://doi.org/10.1080/15213269.2014.1002942">doi:10.1080/15213269.2014.1002942</a></li>
+    <li id="ref-rodero2017"><span class="rl">Rodero et al. 2017.</span>Rodero, E., Potter, R. F. &amp; Prieto, P. (2017). "Pitch Range Variations Improve Cognitive Processing of Audio Messages." <em>Human Communication Research</em> 43(3), 397–413. <a href="https://doi.org/10.1111/hcre.12109">doi:10.1111/hcre.12109</a></li>
+    <li id="ref-salganik2006"><span class="rl">Salganik et al. 2006.</span>Salganik, Dodds &amp; Watts (2006). "Experimental Study of Inequality and Unpredictability in an Artificial Cultural Market." <em>Science</em> 311(5762), 854–856. <a href="https://doi.org/10.1126/science.1121066">doi:10.1126/science.1121066</a></li>
+    <li id="ref-swerts1994"><span class="rl">Swerts &amp; Geluykens 1994.</span>Swerts, M. &amp; Geluykens, R. (1994). "Prosody as a Marker of Information Flow in Spoken Discourse." <em>Language and Speech</em> 37(1), 21–43. <a href="https://doi.org/10.1177/002383099403700102">doi:10.1177/002383099403700102</a></li>
+    <li id="ref-pulsing2010"><span class="rl">Teixeira et al. 2010.</span>Teixeira, Wedel &amp; Pieters (2010). "Moment-to-Moment Optimal Branding in TV Commercials: Preventing Avoidance by Pulsing." <em>Marketing Science</em> 29(5), 783–804. <a href="https://doi.org/10.1287/mksc.1100.0567">doi:10.1287/mksc.1100.0567</a></li>
+    <li id="ref-teixeira2012"><span class="rl">Teixeira et al. 2012.</span>Teixeira, Wedel &amp; Pieters (2012). "Emotion-Induced Engagement in Internet Video Advertisements." <em>Journal of Marketing Research</em> 49 (April), 144–159. <a href="https://doi.org/10.1509/jmr.10.0207">doi:10.1509/jmr.10.0207</a></li>
+    <li id="ref-tellis2019"><span class="rl">Tellis et al. 2019.</span>Tellis, MacInnis, Tirunillai &amp; Zhang (2019). "What Drives Virality (Sharing) of Online Digital Content? The Critical Role of Information, Emotion, and Brand Prominence." <em>Journal of Marketing</em>. <a href="https://doi.org/10.1177/0022242919841034">doi:10.1177/0022242919841034</a></li>
+    <li id="ref-theune2006"><span class="rl">Theune et al. 2006.</span>Theune, M., Meijs, K., Heylen, D. &amp; Ordelman, R. (2006). "Generating Expressive Speech for Storytelling Applications." <em>IEEE Transactions on Audio, Speech, and Language Processing</em> 14(4), 1137–1144. <a href="https://doi.org/10.1109/TASL.2006.876129">doi:10.1109/TASL.2006.876129</a></li>
+    <li id="ref-valdez1994"><span class="rl">Valdez &amp; Mehrabian 1994.</span>Valdez &amp; Mehrabian (1994). "Effects of Color on Emotions." <em>Journal of Experimental Psychology: General</em> 123(4), 394–409. <a href="https://doi.org/10.1037/0096-3445.123.4.394">doi:10.1037/0096-3445.123.4.394</a></li>
+    <li id="ref-vanlieshout2021a"><span class="rl">van Lieshout et al. 2021a.</span>van Lieshout, de Lange &amp; Cools (2021). "Uncertainty increases curiosity, but decreases happiness." <em>Scientific Reports</em> 11, 14014. <a href="https://doi.org/10.1038/s41598-021-93464-6">doi:10.1038/s41598-021-93464-6</a></li>
+    <li id="ref-vanlieshout2021b"><span class="rl">van Lieshout et al. 2021b.</span>van Lieshout, Traast, de Lange &amp; Cools (2021). "Curiosity or savouring? Information seeking is modulated by both uncertainty and valence." <em>PLOS ONE</em> 16(9), e0257011. <a href="https://doi.org/10.1371/journal.pone.0257011">doi:10.1371/journal.pone.0257011</a></li>
+    <li id="ref-varan2019"><span class="rl">Varan et al. 2020.</span>Varan, Nenycz-Thiel, Kennedy &amp; Bellman (2020; online 2019). "The Effects of Commercial Length on Advertising Impact: What Short Advertisements Can and Cannot Deliver." <em>Journal of Advertising Research</em> 60(1). <a href="https://doi.org/10.2501/JAR-2019-036">doi:10.2501/JAR-2019-036</a></li>
+    <li id="ref-wen2025"><span class="rl">Wen et al. 2025.</span>Wen, Niu &amp; Liao (2025). "U-shaped Effect of Color in Short-form Video: Combination of Text, Audio, Image ML and Generative AI." <em>Journal of Business Research</em> 192, 115278. <a href="https://doi.org/10.1016/j.jbusres.2025.115278">doi:10.1016/j.jbusres.2025.115278</a></li>
+    <li id="ref-elpers2003"><span class="rl">Woltman Elpers et al. 2003.</span>Woltman Elpers, Wedel &amp; Pieters (2003). "Why Do Consumers Stop Viewing Television Commercials? Two Experiments on the Influence of Moment-to-Moment Entertainment and Information Value." <em>Journal of Marketing Research</em> 40 (November), 437–453. <a href="https://doi.org/10.1509/jmkr.40.4.437.19393">doi:10.1509/jmkr.40.4.437.19393</a></li>
+    <li id="ref-peakend-learning"><span class="rl">Xie &amp; Li 2026.</span>Xie, W. &amp; Li, Z. (2026). "The Peak–End Rule and Retrospective Emotional Valence in Digital Learning Tasks: Evidence from a Word-Learning App." <em>Behavioral Sciences</em> 16(5), 779. <a href="https://doi.org/10.3390/bs16050779">doi:10.3390/bs16050779</a></li>
+    <li id="ref-yin2026"><span class="rl">Yin et al. 2026.</span>Yin, H., Sturt, P. &amp; Pickering, M. J. (2026). "Faster Speech Slows Predictive Processing: Evidence from Mandarin." <em>Quarterly Journal of Experimental Psychology</em> 2026. <a href="https://doi.org/10.1177/17470218261446782">doi:10.1177/17470218261446782</a></li>
+    <li id="ref-zhao2019"><span class="rl">Zhao et al. 2019.</span>Zhao, Hong, Wei, Chen, Nath, Andrews, Kumthekar, Sathiamoorthy, Yi &amp; Chi (2019). "Recommending What Video to Watch Next: A Multitask Ranking System." <em>RecSys '19</em>, 43–51. <a href="https://doi.org/10.1145/3298689.3346997">doi:10.1145/3298689.3346997</a></li>
+  </ol>
+</section>
+
+<footer>Stay or Swipe is updated as new papers are read. It isn't affiliated with YouTube, TikTok or Meta. Last updated 14 November 2026.</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  var KEY = "stay-or-swipe-checklist";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('#check input[type="checkbox"]'));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+  boxes.forEach(function(b){
+    b.checked = !!saved[b.id];
+    b.addEventListener("change", function(){
+      saved[b.id] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+  var msg = document.getElementById("copied");
+  document.getElementById("reset").addEventListener("click", function(){
+    boxes.forEach(function(b){ b.checked = false; }); saved = {};
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    msg.textContent = "Ticks cleared";
+  });
+  document.getElementById("copy").addEventListener("click", function(){
+    var text = Array.prototype.map.call(document.querySelectorAll("#check label"), function(l, i){ return (i + 1) + ". " + l.textContent.trim(); }).join("\n");
+    var done = function(){ msg.textContent = "Checklist copied"; };
+    var fallback = function(){
+      var r = document.createRange(); r.selectNodeContents(document.getElementById("check"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      msg.textContent = "Selected: press Copy to copy it";
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>
